@@ -5,10 +5,10 @@ import Slider from './components/Slider'
 class App extends Component {
   render() {
     return (
-      <>
+      <section className="center-content">
         <HelloWorld />
         <Slider />
-      </>
+      </section>
     )
   }
 }
