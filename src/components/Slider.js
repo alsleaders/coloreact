@@ -64,7 +64,17 @@ export default function Slider() {
         />
       </div>
       <p>
-        Would you like a <button onClick={this.getRandomColor}>Random</button>{' '}
+        Would you like a{' '}
+        <button
+          onClick={() => {
+            setHue(Math.ceil(Math.random() * 360))
+            setSaturation(Math.ceil(Math.random() * 100))
+            setLightness(Math.ceil(Math.random() * 100))
+            setTransparency(Math.ceil(Math.random() * 100))
+          }}
+        >
+          Random
+        </button>{' '}
         color?
       </p>
     </>
