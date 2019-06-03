@@ -1,50 +1,72 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 export default function Slider() {
-  const [hue, setHue] = useState(180)
-  const [saturation, setSaturation] = useState(50)
-  const [lightness, setLightness] = useState(50)
-  const [backgroundColor, updateBackgroundColor] = useState()
-
+  // const [random, setRandom] = useState()
+  const [hue, setHue] = useState(Math.ceil(Math.random() * 360))
+  const [saturation, setSaturation] = useState(Math.ceil(Math.random() * 100))
+  const [lightness, setLightness] = useState(Math.ceil(Math.random() * 100))
+  const [transparency, setTransparency] = useState(
+    Math.ceil(Math.random() * 100)
+  )
+  // const [backgroundColor, updateBackgroundColor] = useState()
   console.log({ hue, setHue })
   console.log({ saturation, setSaturation })
   console.log({ lightness, setLightness })
 
-  // updateBackgroundColor = () => {
-  //   updateColor(`hsl(${hue}, 50%, 50%)`)
-  // }
-
   return (
-    <div
-      style={{ backgroundColor: `hsl(${hue}, ${saturation}%, ${lightness}%)` }}
-    >
-      <input
-        type="range"
-        min="0"
-        max="360"
-        // value={}
-        className="slider"
-        id="HSlider"
-        onChange={e => setHue(e.target.value)}
-      />
-      <input
-        type="range"
-        min="0"
-        max="100"
-        // value={}
-        className="slider"
-        id="SSlider"
-        onChange={e => setSaturation(e.target.value)}
-      />
-      <input
-        type="range"
-        min="0"
-        max="100"
-        // value={}
-        className="slider"
-        id="LSlider"
-        onChange={e => setLightness(e.target.value)}
-      />
-    </div>
+    <>
+      <h2>So many different colors! </h2>
+      <div
+        style={{
+          backgroundColor: `hsl(${hue}, ${saturation}%, ${lightness}%, ${transparency}%)`
+        }}
+      >
+        <p>This is the hue - the value of H is {hue}</p>
+        <input
+          type="range"
+          min="0"
+          max="360"
+          value={hue}
+          className="slider"
+          id="HSlider"
+          onChange={e => setHue(e.target.value)}
+        />
+        {/* <hr> */}
+        <p>This is the saturation - the value of S is {saturation}%</p>
+        <input
+          type="range"
+          min="0"
+          max="100"
+          value={saturation}
+          className="slider"
+          id="SSlider"
+          onChange={e => setSaturation(e.target.value)}
+        />
+        <p>This is the lightness - the value of L is {lightness}%</p>
+        <input
+          type="range"
+          min="0"
+          max="100"
+          value={lightness}
+          className="slider"
+          id="LSlider"
+          onChange={e => setLightness(e.target.value)}
+        />
+        <p>This is the transparency - the value of A is {transparency}%</p>
+        <input
+          type="range"
+          min="0"
+          max="100"
+          value={transparency}
+          className="slider"
+          id="ASlider"
+          onChange={e => setTransparency(e.target.value)}
+        />
+      </div>
+      <p>
+        Would you like a <button onClick={this.getRandomColor}>Random</button>{' '}
+        color?
+      </p>
+    </>
   )
 }
